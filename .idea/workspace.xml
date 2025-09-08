@@ -4,15 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f518517b-9e01-4e28-b469-f8422ab267f7" name="Changes" comment="" />
+    <list default="true" id="f518517b-9e01-4e28-b469-f8422ab267f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Sup_headless_off_checkout_.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/headless_off_checkout_V2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="32Q2ktOprkIbYdbBvZaXPCRdZR4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -21,10 +35,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.headless_mode_off_V2.executor": "Run",
+    "Python.headless_off_checkout_V2.executor": "Run",
     "Python.web_scraper.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "last_opened_file_path": "/Users/shak_withthek/Desktop/cs/Projects/ClozetHype_V2",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "feature/checkout-flow",
+    "last_opened_file_path": "/Users/shak_withthek/Desktop/cs/Projects/sneakerbot/ClozetHype_V2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -36,6 +55,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-PY-252.25557.178" />
         <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
       </set>
     </attachedChunks>
@@ -48,6 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1757338622283</updated>
       <workItem from="1757338642621" duration="3386000" />
+      <workItem from="1757369070912" duration="3401000" />
     </task>
     <servers />
   </component>
@@ -55,6 +76,9 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ClozetHype_V2$headless_mode_off_V2.coverage" NAME="headless_mode_off_V2 Coverage Results" MODIFIED="1757369180603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/ClozetHype_V2$web_scraper.coverage" NAME="web_scraper Coverage Results" MODIFIED="1757339999244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/ClozetHype_V2$headless_off_checkout_V2.coverage" NAME="headless_off_checkout_V2 Coverage Results" MODIFIED="1757370953475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/ClozetHype_V2$sup_and_pal_scraper.coverage" NAME="sup_and_pal_scraper Coverage Results" MODIFIED="1757364793398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
