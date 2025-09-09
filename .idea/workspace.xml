@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f518517b-9e01-4e28-b469-f8422ab267f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Sup_core_bot_V3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f518517b-9e01-4e28-b469-f8422ab267f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +67,7 @@
       <updated>1757338622283</updated>
       <workItem from="1757338642621" duration="3386000" />
       <workItem from="1757369070912" duration="4868000" />
-      <workItem from="1757424793798" duration="4730000" />
+      <workItem from="1757424793798" duration="4928000" />
     </task>
     <servers />
   </component>
