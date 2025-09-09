@@ -52,5 +52,5 @@ Contributing
 This is a personal project, but suggestions are always welcome.
 
 Contact
-Your Name - @YourSocialMedia
+Your Name - @Shakwiththek
 Project Link: https://github.com/shakwiththek/sneakerbot
