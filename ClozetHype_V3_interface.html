@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supreme Bot UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar {
+            height: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #2d3748;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-4">
+
+<div class="bg-gray-800 p-8 rounded-lg shadow-2xl w-full max-w-4xl">
+    <h1 class="text-3xl font-semibold mb-6 text-center text-red-500">ClozetHype</h1>
+    <p class="text-center text-sm mb-6 text-gray-400">
+        Pick a site to create tasks.
+    </p>
+
+    <!-- Main Form Container -->
+    <form id="bot-form" class="space-y-4">
+        <!-- Choose Site Section with Image Logos -->
+        <div id="choose-site-section" class="space-y-4">
+            <h2 class="text-lg font-medium text-gray-300 text-center">Choose a Site</h2>
+
+            <!-- Site Selector with Navigation Arrows -->
+            <div id="site-selector-container" class="flex items-center justify-center space-x-4">
+                <!-- Left Arrow -->
+                <button type="button" id="left-arrow" class="text-gray-400 hover:text-red-500 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <!-- Scrollable Site List -->
+                <div id="site-list-mask" class="w-96 overflow-hidden rounded-lg">
+                    <div id="site-image-selector" class="flex space-x-4 transition-transform duration-300 ease-in-out">
+                        <div data-site="supreme" class="flex-shrink-0 cursor-pointer p-2 rounded-lg transition-transform duration-200 transform hover:scale-105 border-4 border-transparent hover:border-red-500">
+                            <img src="https://placehold.co/120x120/000000/ffffff?text=Supreme" alt="Supreme Logo" class="h-24 w-24 rounded-lg">
+                        </div>
+                        <div data-site="palace" class="flex-shrink-0 cursor-pointer p-2 rounded-lg transition-transform duration-200 transform hover:scale-105 border-4 border-transparent hover:border-red-500">
+                            <img src="https://placehold.co/120x120/ffffff/000000?text=Palace" alt="Palace Logo" class="h-24 w-24 rounded-lg">
+                        </div>
+                        <div data-site="bape" class="flex-shrink-0 cursor-pointer p-2 rounded-lg transition-transform duration-200 transform hover:scale-105 border-4 border-transparent hover:border-red-500">
+                            <img src="https://placehold.co/120x120/1a1a1a/b52358?text=BAPE" alt="Bape Logo" class="h-24 w-24 rounded-lg">
+                        </div>
+                        <div data-site="footlocker" class="flex-shrink-0 cursor-pointer p-2 rounded-lg transition-transform duration-200 transform hover:scale-105 border-4 border-transparent hover:border-red-500">
+                            <img src="https://placehold.co/120x120/fcd34d/1e40af?text=FootLocker" alt="Foot Locker Logo" class="h-24 w-24 rounded-lg">
+                        </div>
+                        <div data-site="jdsports" class="flex-shrink-0 cursor-pointer p-2 rounded-lg transition-transform duration-200 transform hover:scale-105 border-4 border-transparent hover:border-red-500">
+                            <img src="https://placehold.co/120x120/FFFFFF/000000?text=JDSports" alt="JD Sports Logo" class="h-24 w-24 rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Arrow -->
+                <button type="button" id="right-arrow" class="text-gray-400 hover:text-red-500 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Site Details Section (Hidden by default) -->
+        <div id="site-details-section" class="space-y-4 hidden">
+            <!-- Back Button -->
+            <button type="button" id="back-button" class="px-4 py-2 text-sm text-gray-400 border border-gray-600 rounded-full hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500">
+                &larr; Back
+            </button>
+
+            <!-- Supreme Form Fields (Hidden by default) -->
+            <div id="supreme-form" class="space-y-4 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="supreme_first_name" class="block text-sm font-medium text-gray-400">First Name</label>
+                        <input type="text" id="supreme_first_name" name="supreme_first_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="supreme_last_name" class="block text-sm font-medium text-gray-400">Last Name</label>
+                        <input type="text" id="supreme_last_name" name="supreme_last_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="supreme_email" class="block text-sm font-medium text-gray-400">Email</label>
+                        <input type="email" id="supreme_email" name="supreme_email" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="supreme_address" class="block text-sm font-medium text-gray-400">Address</label>
+                        <input type="text" id="supreme_address" name="supreme_address" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="supreme_city" class="block text-sm font-medium text-gray-400">City</label>
+                        <input type="text" id="supreme_city" name="supreme_city" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <!-- Payment Method Section -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium text-gray-400 pt-4">Payment Method</h3>
+                    <div>
+                        <label for="supreme_card_number" class="block text-sm font-medium text-gray-400">Card Number</label>
+                        <input type="tel" id="supreme_card_number" name="supreme_card_number" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="supreme_expiry_month" class="block text-sm font-medium text-gray-400">Exp. Month</label>
+                            <input type="text" id="supreme_expiry_month" name="supreme_expiry_month" placeholder="MM" pattern="(0[1-9]|1[0-2])" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="supreme_expiry_year" class="block text-sm font-medium text-gray-400">Exp. Year</label>
+                            <input type="text" id="supreme_expiry_year" name="supreme_expiry_year" placeholder="YY" pattern="\d{2}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="supreme_cvv" class="block text-sm font-medium text-gray-400">CVV</label>
+                            <input type="text" id="supreme_cvv" name="supreme_cvv" placeholder="123" pattern="\d{3,4}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="supreme_product_url" class="block text-sm font-medium text-gray-400">Product URL</label>
+                    <input type="url" id="supreme_product_url" name="supreme_product_url" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                </div>
+            </div>
+
+            <!-- Palace Form Fields (Hidden by default) -->
+            <div id="palace-form" class="space-y-4 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="palace_first_name" class="block text-sm font-medium text-gray-400">First Name</label>
+                        <input type="text" id="palace_first_name" name="palace_first_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="palace_last_name" class="block text-sm font-medium text-gray-400">Last Name</label>
+                        <input type="text" id="palace_last_name" name="palace_last_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="palace_email" class="block text-sm font-medium text-gray-400">Email</label>
+                        <input type="email" id="palace_email" name="palace_email" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="palace_address" class="block text-sm font-medium text-gray-400">Address</label>
+                        <input type="text" id="palace_address" name="palace_address" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="palace_city" class="block text-sm font-medium text-gray-400">City</label>
+                        <input type="text" id="palace_city" name="palace_city" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <!-- Payment Method Section -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium text-gray-400 pt-4">Payment Method</h3>
+                    <div>
+                        <label for="palace_card_number" class="block text-sm font-medium text-gray-400">Card Number</label>
+                        <input type="tel" id="palace_card_number" name="palace_card_number" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="palace_expiry_month" class="block text-sm font-medium text-gray-400">Exp. Month</label>
+                            <input type="text" id="palace_expiry_month" name="palace_expiry_month" placeholder="MM" pattern="(0[1-9]|1[0-2])" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="palace_expiry_year" class="block text-sm font-medium text-gray-400">Exp. Year</label>
+                            <input type="text" id="palace_expiry_year" name="palace_expiry_year" placeholder="YY" pattern="\d{2}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="palace_cvv" class="block text-sm font-medium text-gray-400">CVV</label>
+                            <input type="text" id="palace_cvv" name="palace_cvv" placeholder="123" pattern="\d{3,4}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="palace_product_url" class="block text-sm font-medium text-gray-400">Product URL</label>
+                    <input type="url" id="palace_product_url" name="palace_product_url" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                </div>
+            </div>
+
+            <!-- Bape Form Fields (Hidden by default) -->
+            <div id="bape-form" class="space-y-4 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="bape_first_name" class="block text-sm font-medium text-gray-400">First Name</label>
+                        <input type="text" id="bape_first_name" name="bape_first_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="bape_last_name" class="block text-sm font-medium text-gray-400">Last Name</label>
+                        <input type="text" id="bape_last_name" name="bape_last_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="bape_email" class="block text-sm font-medium text-gray-400">Email</label>
+                        <input type="email" id="bape_email" name="bape_email" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="bape_address" class="block text-sm font-medium text-gray-400">Address</label>
+                        <input type="text" id="bape_address" name="bape_address" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="bape_city" class="block text-sm font-medium text-gray-400">City</label>
+                        <input type="text" id="bape_city" name="bape_city" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <!-- Payment Method Section -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium text-gray-400 pt-4">Payment Method</h3>
+                    <div>
+                        <label for="bape_card_number" class="block text-sm font-medium text-gray-400">Card Number</label>
+                        <input type="tel" id="bape_card_number" name="bape_card_number" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="bape_expiry_month" class="block text-sm font-medium text-gray-400">Exp. Month</label>
+                            <input type="text" id="bape_expiry_month" name="bape_expiry_month" placeholder="MM" pattern="(0[1-9]|1[0-2])" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="bape_expiry_year" class="block text-sm font-medium text-gray-400">Exp. Year</label>
+                            <input type="text" id="bape_expiry_year" name="bape_expiry_year" placeholder="YY" pattern="\d{2}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="bape_cvv" class="block text-sm font-medium text-gray-400">CVV</label>
+                            <input type="text" id="bape_cvv" name="bape_cvv" placeholder="123" pattern="\d{3,4}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="bape_product_url" class="block text-sm font-medium text-gray-400">Product URL</label>
+                    <input type="url" id="bape_product_url" name="bape_product_url" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                </div>
+            </div>
+
+            <!-- Foot Locker Form Fields (Hidden by default) -->
+            <div id="footlocker-form" class="space-y-4 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="footlocker_first_name" class="block text-sm font-medium text-gray-400">First Name</label>
+                        <input type="text" id="footlocker_first_name" name="footlocker_first_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="footlocker_last_name" class="block text-sm font-medium text-gray-400">Last Name</label>
+                        <input type="text" id="footlocker_last_name" name="footlocker_last_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="footlocker_email" class="block text-sm font-medium text-gray-400">Email</label>
+                        <input type="email" id="footlocker_email" name="footlocker_email" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="footlocker_address" class="block text-sm font-medium text-gray-400">Address</label>
+                        <input type="text" id="footlocker_address" name="footlocker_address" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="footlocker_city" class="block text-sm font-medium text-gray-400">City</label>
+                        <input type="text" id="footlocker_city" name="footlocker_city" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <!-- Payment Method Section -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium text-gray-400 pt-4">Payment Method</h3>
+                    <div>
+                        <label for="footlocker_card_number" class="block text-sm font-medium text-gray-400">Card Number</label>
+                        <input type="tel" id="footlocker_card_number" name="footlocker_card_number" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="footlocker_expiry_month" class="block text-sm font-medium text-gray-400">Exp. Month</label>
+                            <input type="text" id="footlocker_expiry_month" name="footlocker_expiry_month" placeholder="MM" pattern="(0[1-9]|1[0-2])" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="footlocker_expiry_year" class="block text-sm font-medium text-gray-400">Exp. Year</label>
+                            <input type="text" id="footlocker_expiry_year" name="footlocker_expiry_year" placeholder="YY" pattern="\d{2}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="footlocker_cvv" class="block text-sm font-medium text-gray-400">CVV</label>
+                            <input type="text" id="footlocker_cvv" name="footlocker_cvv" placeholder="123" pattern="\d{3,4}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="footlocker_product_url" class="block text-sm font-medium text-gray-400">Product URL</label>
+                    <input type="url" id="footlocker_product_url" name="footlocker_product_url" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                </div>
+            </div>
+
+            <!-- JD Sports Form Fields (Hidden by default) -->
+            <div id="jdsports-form" class="space-y-4 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="jdsports_first_name" class="block text-sm font-medium text-gray-400">First Name</label>
+                        <input type="text" id="jdsports_first_name" name="jdsports_first_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="jdsports_last_name" class="block text-sm font-medium text-gray-400">Last Name</label>
+                        <input type="text" id="jdsports_last_name" name="jdsports_last_name" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="jdsports_email" class="block text-sm font-medium text-gray-400">Email</label>
+                        <input type="email" id="jdsports_email" name="jdsports_email" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="jdsports_address" class="block text-sm font-medium text-gray-400">Address</label>
+                        <input type="text" id="jdsports_address" name="jdsports_address" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div>
+                        <label for="jdsports_city" class="block text-sm font-medium text-gray-400">City</label>
+                        <input type="text" id="jdsports_city" name="jdsports_city" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                </div>
+                <!-- Payment Method Section -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium text-gray-400 pt-4">Payment Method</h3>
+                    <div>
+                        <label for="jdsports_card_number" class="block text-sm font-medium text-gray-400">Card Number</label>
+                        <input type="tel" id="jdsports_card_number" name="jdsports_card_number" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="jdsports_expiry_month" class="block text-sm font-medium text-gray-400">Exp. Month</label>
+                            <input type="text" id="jdsports_expiry_month" name="jdsports_expiry_month" placeholder="MM" pattern="(0[1-9]|1[0-2])" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="jdsports_expiry_year" class="block text-sm font-medium text-gray-400">Exp. Year</label>
+                            <input type="text" id="jdsports_expiry_year" name="jdsports_expiry_year" placeholder="YY" pattern="\d{2}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                        <div>
+                            <label for="jdsports_cvv" class="block text-sm font-medium text-gray-400">CVV</label>
+                            <input type="text" id="jdsports_cvv" name="jdsports_cvv" placeholder="123" pattern="\d{3,4}" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="jdsports_product_url" class="block text-sm font-medium text-gray-400">Product URL</label>
+                    <input type="url" id="jdsports_product_url" name="jdsports_product_url" class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-red-500 focus:border-red-500 shadow-sm">
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-6">
+                <button id="run-button" class="w-full md:w-auto px-6 py-3 rounded-full text-white font-bold bg-red-600 hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900 shadow-lg">
+                    Run Bot
+                </button>
+            </div>
+
+            <!-- Bot Log Section -->
+            <div id="bot-log-container" class="mt-8">
+                <h3 class="text-lg font-medium text-gray-400 mb-2">Bot Log</h3>
+                <div id="log-output" class="bg-gray-700 text-gray-200 p-4 rounded-md h-48 overflow-y-auto text-sm whitespace-pre-wrap">
+                    <!-- Log messages will be appended here -->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('bot-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+    });
+
+    const chooseSiteSection = document.getElementById('choose-site-section');
+    const siteDetailsSection = document.getElementById('site-details-section');
+    const logOutput = document.getElementById('log-output');
+    const supremeForm = document.getElementById('supreme-form');
+    const palaceForm = document.getElementById('palace-form');
+    const bapeForm = document.getElementById('bape-form');
+    const footlockerForm = document.getElementById('footlocker-form');
+    const jdsportsForm = document.getElementById('jdsports-form');
+    const siteImageSelector = document.getElementById('site-image-selector');
+    const backButton = document.getElementById('back-button');
+
+    const formMapping = {
+        'supreme': supremeForm,
+        'palace': palaceForm,
+        'bape': bapeForm,
+        'footlocker': footlockerForm,
+        'jdsports': jdsportsForm
+    };
+
+    // Helper function to add messages to the log
+    function logMessage(message) {
+        const now = new Date();
+        const timestamp = now.toLocaleTimeString();
+        const logEntry = document.createElement('p');
+        logEntry.textContent = `[${timestamp}] ${message}`;
+        logOutput.appendChild(logEntry);
+        // Auto-scroll to the bottom of the log
+        logOutput.scrollTop = logOutput.scrollHeight;
+    }
+
+    // Navigation for the site images
+    const leftArrow = document.getElementById('left-arrow');
+    const rightArrow = document.getElementById('right-arrow');
+    const siteItems = Array.from(siteImageSelector.children);
+    const visibleItems = 3;
+    const totalItems = siteItems.length;
+    let currentIndex = 0;
+
+    const updateArrows = () => {
+        leftArrow.disabled = currentIndex === 0;
+        rightArrow.disabled = currentIndex >= totalItems - visibleItems;
+    };
+
+    const slide = () => {
+        const itemWidth = siteItems[0].offsetWidth + 16; // 16px is space-x-4
+        siteImageSelector.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        updateArrows();
+    };
+
+    leftArrow.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            slide();
+        }
+    });
+
+    rightArrow.addEventListener('click', () => {
+        if (currentIndex < totalItems - visibleItems) {
+            currentIndex++;
+            slide();
+        }
+    });
+
+    // Function to handle site selection and show the details section
+    siteImageSelector.addEventListener('click', function(event) {
+        const selectedSiteElement = event.target.closest('[data-site]');
+        if (!selectedSiteElement) {
+            return; // Exit if no site element was clicked
+        }
+        const selectedSite = selectedSiteElement.dataset.site;
+        const formToShow = formMapping[selectedSite];
+
+        // Hide all forms and remove 'required'
+        Object.values(formMapping).forEach(form => {
+            form.classList.add('hidden');
+            form.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+        });
+
+        // Show the selected form and add 'required' attributes
+        if (formToShow) {
+            formToShow.classList.remove('hidden');
+            formToShow.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
+        }
+
+        // Show the details section and hide the initial selection
+        chooseSiteSection.classList.add('hidden');
+        siteDetailsSection.classList.remove('hidden');
+
+        // Clear log and add initial message
+        logOutput.innerHTML = '';
+        logMessage(`Ready to create tasks for ${selectedSite}...`);
+    });
+
+    // Function to handle the back button click
+    backButton.addEventListener('click', function() {
+        siteDetailsSection.classList.add('hidden');
+        chooseSiteSection.classList.remove('hidden');
+    });
+
+    document.getElementById('run-button').addEventListener('click', function() {
+        const form = document.getElementById('bot-form');
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const runButton = document.getElementById('run-button');
+
+        runButton.disabled = true;
+        runButton.textContent = 'Running...';
+
+        logMessage("Starting bot run...");
+
+        fetch('/run_bot', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            logMessage(`Bot response: ${data.message}`);
+            runButton.disabled = false;
+            runButton.textContent = 'Run Bot';
+        })
+        .catch(error => {
+            logMessage(`Error: ${error.message}`);
+            runButton.disabled = false;
+            runButton.textContent = 'Run Bot';
+            console.error('Error:', error);
+        });
+    });
+
+    // Initial state setup
+    window.addEventListener('load', () => {
+        updateArrows();
+    });
+</script>
+
+</body>
+</html>
